@@ -30,7 +30,7 @@ from tools.flood import retry_on_flood
 
 
 OWNER_ID = 5455664988 # put owner id in number directly 
-auth_users = [5455664988,5543390445,5543390445,5164955785,1885617638] # eg: [83528911,836289,9362891]
+auth_users = [5455664988,5543390445,5543390445,5164955785,1885617638,5691599911] # eg: [83528911,836289,9362891]
 AUTH_USERS = auth_users + [OWNER_ID]
 
 
@@ -49,13 +49,13 @@ locks: Dict[int, asyncio.Lock] = dict()
 plugin_dicts: Dict[str, Dict[str, MangaClient]] = {
     "🇬🇧 EN": {
         "MangaDex": MangaDexClient(),
-        "Mgeko": MgekoClient(),
         "MangaBuddy": MangaBuddyClient(),
         "ManhwaClan": ManhwaClanClient(),
-        "Comick": ComickClient(),
-        "ReaperScans": ReaperScansClient(),
         "MangaMob": mangamob(),
         "Manhuafast": ManhuaFastClient(),
+        "Mgeko": MgekoClient(),
+        "Comick": ComickClient(),
+        "ReaperScans": ReaperScansClient(),
           },
     #"🇪🇸 ES": {
         #"MangaDex": MangaDexClient(language=("es-la", "es")),
