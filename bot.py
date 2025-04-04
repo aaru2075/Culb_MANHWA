@@ -138,7 +138,7 @@ else:
 @bot.on_message(filters=~(filters.private & filters.incoming))
 async def on_chat_or_channel_message(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     pass
 
 @bot.on_message()
@@ -152,7 +152,7 @@ async def on_private_message(client: Client, message: Message):
         pass
 
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
 
     channel = env_vars.get('CHANNEL')
     if not channel:
@@ -190,9 +190,9 @@ async def on_private_message(client: Client, message: Message):
 @bot.on_message(filters=filters.command(['start']))
 async def on_start(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     logger.info(f"User {message.from_user.id} started the bot")
-    await message.reply("<blockquote>Welcome to the best Sect Manga bot!!\n</blockquote>"
+    await message.reply("<blockquote>Welcome to the best Club Manga bot!!\n</blockquote>"
                         "\n"
                         "How to use? Just type the name of some manga you want to keep up to date.\n"
                         "<blockquote>For example:\n</blockquote>"
@@ -206,21 +206,21 @@ async def on_start(client: Client, message: Message):
 @bot.on_message(filters=filters.command(['help']))
 async def on_help(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy,𝗮𝘀𝗸 𝗮𝗱𝗺𝗶𝗻 𝗳𝗼𝗿 𝗮𝗰𝗰𝗲𝘀𝘀' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     await message.reply(help_msg)
 
 
 @bot.on_message(filters=filters.command(['queue']))
 async def on_help(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     await message.reply(f'Queue size: {pdf_queue.qsize()}')
 
 
 @bot.on_message(filters=filters.command(['refresh']))
 async def on_refresh(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     text = message.reply_to_message.text or message.reply_to_message.caption
     if text:
         regex = re.compile(r'\[Read on telegraph]\((.*)\)')
@@ -245,7 +245,7 @@ async def on_refresh(client: Client, message: Message):
 @bot.on_message(filters=filters.command(['subs']))
 async def on_subs(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     db = DB()
 
     filter_ = message.text.split(maxsplit=1)[1] if message.text.split(maxsplit=1)[1:] else ''
@@ -271,7 +271,7 @@ async def on_subs(client: Client, message: Message):
 @bot.on_message(filters=filters.regex(r'^/cancel ([^ ]+)$'))
 async def on_cancel_command(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     db = DB()
     sub = await db.get(Subscription, (message.matches[0].group(1), str(message.from_user.id)))
     if not sub:
@@ -283,7 +283,7 @@ async def on_cancel_command(client: Client, message: Message):
 @bot.on_message(filters=filters.command(['options']))
 async def on_options_command(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     db = DB()
     user_options = await db.get(MangaOutput, str(message.from_user.id))
     user_options = user_options.output if user_options else (1 << 30) - 1
@@ -294,14 +294,14 @@ async def on_options_command(client: Client, message: Message):
 @bot.on_message(filters=filters.regex(r'^/'))
 async def on_unknown_command(client: Client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     await message.reply("Unknown command")
 
 
 @bot.on_message(filters=filters.text)
 async def on_message(client, message: Message):
     if message.from_user.id not in AUTH_USERS:
-        return await message.reply_text("You Can't Use Me Buddy' :(")
+        return await message.reply_text("<blockquote><b>I only work for @Manga_Campus, Ask my senpai to use me @aaru_2074.</b></blockquote>")
     language_query[f"lang_None_{hash(message.text)}"] = (None, message.text)
     for language in plugin_dicts.keys():
         language_query[f"lang_{language}_{hash(message.text)}"] = (language, message.text)
